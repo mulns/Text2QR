@@ -1,0 +1,518 @@
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0045)http://6.869.csail.mit.edu/fa19/schedule.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="https://fonts.cdnfonts.com/css/caveat" rel="stylesheet">
+<style>
+    @import url('https://fonts.cdnfonts.com/css/caveat');
+</style>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Text2QR</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="description"
+        content="Project page for &#39;Text2QR: Harmonizing Aesthetic Customization and Scanning Robustness for
+        Text-Guided QR Code Generation.&#39;">
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    -->
+    <link href="./assets/js/1.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <p class="title">Text2QR: Harmonizing Aesthetic Customization and Scanning Robustness for
+        Text-Guided QR Code Generation</p>
+    <div style="text-align: center; font-size: 20pt; margin-bottom: 15px">
+        <span>CVPR 2024</span>
+    </div>
+    <p class="author">
+        <span class="author">
+            Guangyang Wu
+        </span>
+        <span class="author">
+            Xiaohong Liu<sup>†</sup>
+        </span>
+        <span class="author">
+            Jun Jia
+        </span>
+        <span class="author">
+            Xuehao Cui
+        </span>
+        <span class="author">
+            Guangtao Zhai
+        </span>
+    </p>
+
+    <p class="affiliations">
+        <span class="author">
+            Shanghai Jiao Tong University
+        </span>
+        <br/>
+        
+        <span class="author">
+            <sup>†</sup><span style="font-size: 80%;">Corresponding author</span>
+        </span>
+    </p>
+
+    <p class="menu">
+        <a style="color: steelblue" href="https://arxiv.org/abs/2403.06452">[Paper]</a> 
+        <a style="color: steelblue" href="https://github.com/mulns/Text2QR" >[Code]</a>
+    </p>
+
+    <div style="text-align: center">
+        <img src="./assets/teaser.jpg" alt="" width="1080px" style="max-width: 100%; height: auto;" />
+    </div>
+
+    <div class="container">
+        &nbsp;
+        <p class="section">&nbsp;</p>
+
+
+
+        <p style="text-align: center;">
+            <span class="section">
+                <b>Abstract</b>
+            </span>
+        </p>
+        <p style="text-align: justify; display: flex; justify-content: center; max-width: 800px; margin:auto"> 
+            <span style="font-size: 120%;">In the digital era, QR codes serve as a linchpin connecting virtual and physical realms. Their pervasive integration across various applications highlights the demand for aesthetically pleasing codes without compromised scannability. However, prevailing methods grapple with the intrinsic challenge of balancing customization and scannability. Notably, stable-diffusion models have ushered in an epoch of high-quality, customizable content generation. This paper introduces Text2QR, a pioneering approach leveraging these advancements to address a fundamental challenge: concurrently achieving user-defined aesthetics and scanning robustness.
+            To ensure stable generation of aesthetic QR codes, we introduce the QR Aesthetic Blueprint (QAB) module, generating a blueprint image exerting control over the entire generation process. Subsequently, the Scannability Enhancing Latent Refinement (SELR) process refines the output iteratively in the latent space, enhancing scanning robustness. This approach harnesses the potent generation capabilities of stable-diffusion models, navigating the trade-off between image aesthetics and QR code scannability.
+            Our experiments demonstrate the seamless fusion of visual appeal with the practical utility of aesthetic QR codes, markedly outperforming prior methods.
+            </span>
+        </p>
+        <p class="section">&nbsp;</p>
+
+
+
+        <p class="section"><b>Method</b></p>
+
+        <div style="text-align: center">
+            <img src="./assets/main_structure.jpg" alt="" width="1080px" style="max-width: 100%; height: auto;" />
+        </div>
+        &nbsp;
+        <p style="text-align: justify">
+            <span style="font-size: 120%;">
+                Overall Structure of the Text2QR. The pipeline consists of three stages, denoted with orange, blue and black lines. We propose the QAB module for generating a blueprint image used as controlling guidance, and propose the SELR module for refining the controlled output to enhance its scanning robustness.
+            </span>
+        </p>
+        <p class="section"><b>Results</b></p>
+
+        <div class="container" style="min-height: 224px" style="text-align: center" width="45%">
+                <tr>
+                    <div id="imageCarousel" class="carousel slide teaser-carousel" data-ride="carousel" data-interval="5000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div>
+                                    <img class="teaser-img" src="./assets/1/1.jpg" />
+                                    <span style="font-size: 150%;">+</span>
+                                    <img class="teaser-img" src="./assets/qrc.png" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img class="teaser-img" src="./assets/1/1r.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="caption caption-active">
+                                        "explosionmagic, smoke, glowing aura, excessive energy, fantasy, dissolving, decay, full body, (knight:1.1), enchanted armor, enchanted sword, helmet"</div>
+                                    <br />
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./assets/1/3.jpg"  />
+                                    <span style="font-size: 150%;">+</span>
+                                    <img class="teaser-img" src="./assets/qrc.png" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img class="teaser-img" src="./assets/1/3r.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="caption caption-active">
+                                        "1girl, (solo), black hair, long hair, brown eyes, ponytail, simple clothes, hanfu, smooth skin, bare legs, one arm up, socks, grabbing, looking afar, plant, peach blossom, petals, flowers"</div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./assets/1/4.jpg"  />
+                                    <span style="font-size: 150%;">+</span>
+                                    <img class="teaser-img" src="./assets/qrc.png" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img class="teaser-img" src="./assets/1/4r.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="caption caption-active">
+                                        "A tourist cruise liner glides gracefully through the starry expanse,offering breathtaking views of celestial wonders and luxurious amenities for intergalactic travelers"</div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./assets/1/5.jpg"  />
+                                    <span style="font-size: 150%;">+</span>
+                                    <img class="teaser-img" src="./assets/qrc.png" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img class="teaser-img" src="./assets/1/5r.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="caption caption-active">
+                                        "mountain background, scenery, ink, mountains, water, trees"</div>
+                                    <br />
+                                </div>
+                            </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+                            <div class="slider-navigation-previous">
+                                <svg viewBox="0 0 50 80" xml:space="preserve">
+                                    <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                        stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
+                                    </polyline>
+                                </svg>
+                            </div>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                            <div class="slider-navigation-next">
+                                <svg viewBox="0 0 50 80" xml:space="preserve">
+                                    <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                        stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
+                                    </polyline>
+                                </svg>
+                            </div>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </tr>
+        </div>
+        <p class="section">&nbsp;</p>
+        <p class="section">&nbsp;</p>
+
+        <div class="container" style="min-height: 224px" width="45%">
+                <tr>
+                    <div id="imageCarousel2" class="carousel slide teaser-carousel" data-ride="carousel" data-interval="5000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div>
+                                    <img class="teaser-img" src="./assets/2/1.jpg" />
+                                    <span style="font-size: 150%;">+</span>
+                                    <img class="teaser-img" src="./assets/qrc.png" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img class="teaser-img" src="./assets/2/1r.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="caption caption-active">
+                                        "peacock, 1girl, solo, dress, gloves, long hair, full body, black gloves, flower, hair ornament, elbow gloves, looking at viewer, white background, black dress, blue flower, earrings, standing, bare shoulders, hair flower, simple background, jewelry, grey eyes, bangs, blue rose"</div>
+                                    <br />
+                                </div>
+                            </div>
+                            
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./assets/2/2.jpg"  />
+                                    <span style="font-size: 150%;">+</span>
+                                    <img class="teaser-img" src="./assets/qrc.png" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img class="teaser-img" src="./assets/2/2r.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="caption caption-active">
+                                        "enma ai, hair down, hair black, bangs, eyes red, masterpiece, best quality, ultra-detailed, illustration, 1girl, solo, highres, photorealistic, ultra high res, (Original illustration composition), (fusion of limited color, Maximalism artstyle, kimono obi fashion, double exposure, background, illustration, Amazing, lily spider, night darkness, open one's mouth, finger, bouquet flowers red, low twintails, (polychromatic peony:1.15), Movie poster "</div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./assets/2/3.jpg"  />
+                                    <span style="font-size: 150%;">+</span>
+                                    <img class="teaser-img" src="./assets/qrc.png" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img class="teaser-img" src="./assets/2/3r.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="caption caption-active">
+                                        "((full-body)), (a beautiful crystal-spear holding-hands white-armored white-silk-skirt silver-long-greaves orange-wings glass-headpiece blue-hair beautiful amber-yellow-eyes calm-face girl), bokeh, in-the-ruins outdoors, dawn-sky"</div>
+                                    <br />
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div>
+                                    <img class="teaser-img" src="./assets/1/6.jpg"  />
+                                    <span style="font-size: 150%;">+</span>
+                                    <img class="teaser-img" src="./assets/qrc.png" />
+                                    <span style="font-size: 150%;">→</span>
+                                    <img class="teaser-img" src="./assets/1/6r.jpg" />
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="caption caption-active">
+                                        "Wonderful city, 8k, highly detailed,(masterpiece), Castle, town, (papercut), (huge big moon), (made of white paper), artisana handmade, professional result, realistic, clouds, moonlight"</div>
+                                    <br />
+                                </div>
+                            </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#imageCarousel2" role="button" data-slide="prev">
+                            <div class="slider-navigation-previous">
+                                <svg viewBox="0 0 50 80" xml:space="preserve">
+                                    <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                        stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
+                                    </polyline>
+                                </svg>
+                            </div>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#imageCarousel2" role="button" data-slide="next">
+                            <div class="slider-navigation-next">
+                                <svg viewBox="0 0 50 80" xml:space="preserve">
+                                    <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                        stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
+                                    </polyline>
+                                </svg>
+                            </div>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </tr>
+        </div>
+        <p class="section">&nbsp;</p>
+        <p class="section">&nbsp;</p>
+        <p class="section">&nbsp;</p>
+
+        <div class="container" style="min-height: 224px" width="45%">
+            <tr>
+                <div id="imageCarousel3" class="carousel slide teaser-carousel" data-ride="carousel" data-interval="5000">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div>
+                                <img class="teaser-img" src="./assets/2/4.jpg"  />
+                                <span style="font-size: 150%;">+</span>
+                                <img class="teaser-img" src="./assets/qrc.png" />
+                                <span style="font-size: 150%;">→</span>
+                                <img class="teaser-img" src="./assets/2/4r.jpg" />
+                            </div>
+                            <br />
+                            <div>
+                                <div class="caption caption-active">
+                                    "bamboolight, 1girl, from above, solo, sitting, long hair, sky, aqua jacket, bamboo, night, cloud,star (sky), outdoors, wading,water, night sky, black hair, tanabata, starry sky, star (symbol), looking up, blush"</div>
+                                <br />
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div>
+                                <img class="teaser-img" src="./assets/2/5.jpg"  />
+                                <span style="font-size: 150%;">+</span>
+                                <img class="teaser-img" src="./assets/qrc.png" />
+                                <span style="font-size: 150%;">→</span>
+                                <img class="teaser-img" src="./assets/2/5r.jpg" />
+                            </div>
+                            <br />
+                            <div>
+                                <div class="caption caption-active">
+                                    "The arsenal is on a pedestal on the desk where the tweezers and pliers and props, mini(ttp), (8k, RAW photo, best quality, masterpiece:1.2), miniature, landscape, isometric, in a box"</div>
+                                <br />
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div>
+                                <img class="teaser-img" src="./assets/2/6.jpg"  />
+                                <span style="font-size: 150%;">+</span>
+                                <img class="teaser-img" src="./assets/qrc.png" />
+                                <span style="font-size: 150%;">→</span>
+                                <img class="teaser-img" src="./assets/2/6r.jpg" />
+                            </div>
+                            <br />
+                            <div>
+                                <div class="caption caption-active">
+                                    "Ultra HD, depth of field, (masterpiece, best quality, high quality, highres, ultra-detailed), beautiful landscape,mountain, perspective, shuimobysim, badashanren, shukezouma, no humans"</div>
+                                <br />
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div>
+                                <img class="teaser-img" src="./assets/2/7.jpg"  />
+                                <span style="font-size: 150%;">+</span>
+                                <img class="teaser-img" src="./assets/qrc.png" />
+                                <span style="font-size: 150%;">→</span>
+                                <img class="teaser-img" src="./assets/2/7r.jpg" />
+                            </div>
+                            <br />
+                            <div>
+                                <div class="caption caption-active">
+                                    "artist's house in ocean, epic super sky, lots of light, incredible details, absurd colors, many mess flowers bushes, bright and rich colors, colourful, (oversaturated:1.2), ultra realistic, hyperrealistic, trending on artstation, intricate details, ((intricate details)), colorful details,iridescent colors BREAK,((masterpiece best quality)), 4k, ultra detailed, detailed lighting, ((inspired by Hayao Miyazaki)), official art, promotional art, composition"</div>
+                                <br />
+                            </div>
+                        </div>
+
+                    </div>
+                    <a class="carousel-control-prev" href="#imageCarousel3" role="button" data-slide="prev">
+                        <div class="slider-navigation-previous">
+                            <svg viewBox="0 0 50 80" xml:space="preserve">
+                                <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                    stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
+                                </polyline>
+                            </svg>
+                        </div>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#imageCarousel3" role="button" data-slide="next">
+                        <div class="slider-navigation-next">
+                            <svg viewBox="0 0 50 80" xml:space="preserve">
+                                <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
+                                    stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
+                                </polyline>
+                            </svg>
+                        </div>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </tr>
+    </div>
+    
+    <p class="section">&nbsp;</p>
+    <p class="section">&nbsp;</p>
+    <p class="section">&nbsp;</p>
+
+        <div style="text-align: center">
+            <img src="./assets/main.jpg" alt="" width="1080px" style="max-width: 100%; height: auto;" />
+        </div>
+        <p class="section">&nbsp;</p>
+
+        <p class="section"><b>Application</b></p>
+    
+        <div>
+            <table style="width:100%;table-layout: fixed;">  
+
+                <tr>
+                
+                <td style="width: 56.75%;">
+                    <div style="text-align: center;max-width: 100%; height: auto;font-size: 120%;">
+                            <!--Related technologies have applied for patents</br>-->
+                        WeChat mini program：Eyejoy</br>
+                    </div>
+                </td>
+                
+                <td style="width: 39.45%;">
+                    <div style="text-align: center;max-width: 100%; height: auto; font-size: 120%;">
+                        Scan the following QR code to enter Eyejoy</br>
+                    </div>
+                </td>
+                
+                </tr>
+
+                <tr>
+                
+                    <td style="width: 56.75%;">
+                        <div>
+                            <img src="./assets/app/1.jpg" alt="" width="32%"/>
+                            <img src="./assets/app/2.jpg" alt="" width="32%"/>
+                            <img src="./assets/app/3.jpg" alt="" width="32%"/>
+                        </div>
+                    </td>
+                    
+                    <td style="width: 39.45%;">
+                        <img src="./assets/app/4.jpg" alt="" width="100%"/>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        <p class="section">&nbsp;</p>
+
+        <p class="section" id="bibtex"><b>Bibtex</b></p>
+        <table border="0">
+            <tbody>
+                <pre style=" display: block;
+                    background: #eee;
+                    white-space: pre;
+                    -webkit-overflow-scrolling: touch;
+                    max-width: 100%;
+                    min-width: 100px;
+                    border-radius: 20px;
+                    ">
+    
+    @article{wu2024text2qr,
+        title={Text2QR: Harmonizing Aesthetic Customization and Scanning Robustness for Text-Guided QR Code Generation},
+        author={Wu, Guangyang and Liu, Xiaohong and Jia, Jun and Cui, Xuehao and Zhai, Guangtao},
+        journal={arXiv preprint arXiv:2403.06452},
+        year={2024}
+    }
+                </pre>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <footer class="footer">
+        <p style="text-align: center;">
+            This page was adapted from <a href="https://github.com/tuneavideo/tuneavideo.github.io">this</a> source code.
+        </p>
+    </footer>
+
+</body>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WLX2Z5QLG8');
+</script>
+<script src="./assets/js/1.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    if (localStorage.getItem("my_app_name_here-quote-scroll") != null) {
+        $(window).scrollTop(localStorage.getItem("my_app_name_here-quote-scroll"));
+    }
+
+    $(window).on("scroll", function() {
+        localStorage.setItem("my_app_name_here-quote-scroll", $(window).scrollTop());
+    });
+
+    });
+</script>
+
+<script>
+function prompt_on(prompt_element) {
+    prompt_element.classList.add("caption-active");
+}
+
+function prompt_off(prompt_element) {
+    prompt_element.classList.remove("caption-active");
+}
+
+function toggle_prompt(active_prompt_id, inactive_prompt_ids, result_id) {
+    let active_prompt = document.getElementById(active_prompt_id);
+    prompt_on(active_prompt);
+    for (let i = 0; i < inactive_prompt_ids.length; i++) {
+        let inactive_prompt = document.getElementById(inactive_prompt_ids[i]);
+        prompt_off(inactive_prompt);
+    }
+
+    let result = document.getElementById(result_id);
+    result.src = file_paths[active_prompt_id];
+}
+</script>
+
+<script src="./assets/js/2.js"></script>
+<script src="./assets/js/3.js"></script>
+<script src="./assets/js/4.js"></script>
+    
+
+</html>
